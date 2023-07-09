@@ -10,7 +10,7 @@ Inspired by [Hukum](https://github.com/abskmj/hukum) BitActions is a BitBar plug
 
 Make sure you have `node` and `npm`, then install with the bundled install script:
 ```sh
-$ curl https://raw.githubusercontent.com/simonbucher/bitactions/last-runs/install.sh | NODE=$(which node) bash
+curl https://raw.githubusercontent.com/simonbucher/bitactions/last-runs/install.sh | NODE=$(which node) bash
 ```
 
 # Configuration
