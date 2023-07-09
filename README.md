@@ -19,9 +19,8 @@ Create a `.bitactionsrc` file in your home with the following contents:
 ```json
 {
     "githubToken": "<token>",
-    "githubRepoName": "<repo-name>", 
-    "watchRepoDir": "<repo-name>",   
-    "statusMode": "summarized"            
+    "githubRepoName": "<repo-name>",
+    "numOfWorkflowRuns": 5
 }
 ```
 
@@ -32,28 +31,6 @@ BitActions uses [Github Actions API](https://docs.github.com/en/rest/reference/a
 
 Follow these steps at [docs.github.com](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token) to create a personal token. The token does not need to have any specific scope for public repositories. However, the token  needs to have `repo - Full control of private repositories` scope for private repositories.
 
-## githubRepoName
-// Required - Ex: paulononaka/bitactions
-
-You can get it from the end of your github URL. `https://github.com/paulononaka/bitactions` becames `paulononaka/bitactions`.
-
-## watchRepoDir
-// Optional - Ex: /Users/paulononaka/codes/bitactions
-
-Say you have a workflow that trigger `on: pull_request`. GitHub Actions keeps one workflow for all pushed branches so the last run might not be the branch that you are working on locally, the one that you really want to monitor.
-
-So set this option only if you wish to include a status specifically for a branch that you are working on locally. If you set it a submenu with the workflow filtered by the branch that you are working will be watched. If you wish the status in your Mac OS X Menu Bar to show only this branch, set `statusMode` as `branch`.
-
-Please notice that this feature uses the local branch from a local repo, so if you change the branch locally the submenu will attempt to search for that branch and if it isn't a pull request branch it won't be displayed.
-
-## statusMode
-// Optional - branch, rotate or summarized. Ex: summarized
-
-Choose how the macOS menu bar should appear in the macOS bar menu:
-
-- summarized - Shows all workflows at once, without names.
-- rotate - Rotates the workflow with its name, showing one at a time.
-- branch - Fixes the status to the branch that you are working on your `watchRepoDir`.
 
 # How it works?
 BitActions uses [Github Actions API](https://docs.github.com/en/rest/reference/actions) to get the related workflow to the recent git push and its status. It keeps on calling the APIs every time your BitBar refreshes.
